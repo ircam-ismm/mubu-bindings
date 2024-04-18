@@ -9,7 +9,9 @@ High-level usage:
 - from a .mubu file in SDIF format
 - later: from a network connection to a Max process
 
-2. create an objet of class MubuTrack to access the data
+2. create an objet of class MubuTrack
+- access the data either by list (`getmatrix`, `getmxcolumn`, `getmxrow`),
+- or by whole (NumPy) array using `getmatrixdata`
 
 ## Proposed API
 
@@ -82,6 +84,7 @@ Modeled after the existing mubujs binding within Max
 
 ### MubuTrack Methods
 
+Reminder: a mubu track frame has the elements _time_, _matrix_, _label_
 
 - refer(nubuname, bufferindex, trackindex)
 - release()
@@ -97,6 +100,7 @@ Modeled after the existing mubujs binding within Max
 - getmxrow(rowindex, startindex, num)
 - setmxcolumn(columnindex, startindex, values)
 - setmxrow(rowindex, startindex, values)
+- getmatrixdata(startindex, num) --> native (NumPy) array
 - getlabel(startindex, num)
 - setlabel(startindex, values)
 - getinfo(key)-->with key==NULL returns all infos
